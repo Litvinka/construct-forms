@@ -1,0 +1,26 @@
+﻿<div class="school_questions">
+    <div class="form-group">
+        <h4>Область <span class="span_error">*</span></h4>
+        <div>
+            @Html.DropDownList("area", null, "", htmlAttributes: new { @class = "form-control", required = true })
+        </div>
+    </div>
+    <div class="form-group">
+        <h4>Район <span class="span_error">*</span></h4>
+        <div>
+            @Html.DropDownList("district", null, "", htmlAttributes: new { @class = "form-control", required = true, disabled=true })
+        </div>
+    </div>
+    <div class="form-group">
+        <h4>Школа <span class="span_error">*</span></h4>
+        <div>
+            @Html.DropDownList("school", null, "", htmlAttributes: new { @class = "form-control", required = true, disabled = true })
+        </div>
+    </div>
+    <div class="form-group">
+        <h4>Предмет <span class="span_error">*</span></h4>
+        <div>
+            @Html.DropDownList("subject", null, "", htmlAttributes: new { @class = "form-control", required = true })
+        </div>
+    </div>
+</div>

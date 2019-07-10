@@ -1,0 +1,21 @@
+﻿@model IEnumerable<anketaApp.Models.variant>
+
+
+    @for(int i=0;i<Model.Count();++i)
+    {
+        <div class="form-group @if (Model.Count()>0 && Model.ElementAt(0).question.is_required == true) { Write("required_select"); }">
+                <input class="form-control" type="text" name="variant" value="@Model.ElementAt(i).name" placeholder="Введите название поля" />
+            @if (i > 0)
+            {
+                <img class='icon del_variant' onclick='event.target.parentNode.parentNode.removeChild(event.target.parentNode);' src='/Content/icons/minus.svg'>
+            }
+        </div>
+    }
+    @if (Model.Count() > 0 && Model.Count(p => p.question.question_else.Count() > 0) > 0)
+    {
+        <div class="form-group">
+            <input type="text" value="@Model.First().question.question_else.First().name" class="form-control" name="else" />
+            <img class="icon del_variant" onclick="event.target.parentNode.parentNode.removeChild(event.target.parentNode); DelElse();" src="/Content/icons/minus.svg">
+        </div>
+    }
+

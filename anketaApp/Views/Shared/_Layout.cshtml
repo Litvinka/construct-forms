@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – Конструктор форм</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,13 +16,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Конструктор форм", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if(Session["user_id"]==null){ @Html.ActionLink("Конструктор форм", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                else
+                {
+                    @Html.ActionLink("Конструктор форм", "Index", "Forms", new { area = "" }, new { @class = "navbar-brand" }) }
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("главная", "Index", "Home")</li>*@
                 </ul>
             </div>
         </div>
@@ -31,13 +32,17 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – конструктор форм</p>
-        </footer>
     </div>
+    <footer>
+        <p class="col-md-12">&copy; @DateTime.Now.Year – конструктор форм</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/required.js"></script>
+    <script src="~/Scripts/CreateForm.js"></script>
+    <script src="~/Scripts/large_file.js"></script>
+    <script src="~/Scripts/Choose_school.js"></script>
 </body>
 </html>

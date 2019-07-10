@@ -1,0 +1,1645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище anketaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="answer_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_question_else" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="answer_file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="variant_file_id" Type="int" Nullable="false" />
+          <Property Name="link" Type="ntext" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="answer_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_table_question" Type="int" Nullable="false" />
+          <Property Name="id_table_variant" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="answer_table_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_table_question_else" Type="int" Nullable="false" />
+          <Property Name="id_table_variant" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="answer_text">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="answer_variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_variant" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="districts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_area" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="form">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_state" Type="int" Nullable="false" />
+          <Property Name="date_start" Type="datetime" />
+          <Property Name="text_after" Type="nvarchar(max)" />
+          <Property Name="text_start" Type="nvarchar(max)" />
+          <Property Name="text_before_send" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_type_question" Type="int" Nullable="false" />
+          <Property Name="id_form" Type="int" Nullable="false" />
+          <Property Name="is_required" Type="bit" Nullable="false" />
+          <Property Name="img_url" Type="nvarchar(max)" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="video_url" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="question_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="schools">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_district" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sustem_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="patronumic" Type="nvarchar" MaxLength="255" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="table_question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="table_question_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="table_variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_school" Type="int" Nullable="false" />
+          <Property Name="id_subject" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="variant_file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="question_id" Type="int" Nullable="false" />
+          <Property Name="max_size_file" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_answer_else_question_else">
+          <End Role="question_else" Type="Self.question_else" Multiplicity="1" />
+          <End Role="answer_else" Type="Self.answer_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_else">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_else">
+              <PropertyRef Name="id_question_else" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_else_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_else" Type="Self.answer_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_else">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_file_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_file" Type="Self.answer_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_file">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_file_variant_file">
+          <End Role="variant_file" Type="Self.variant_file" Multiplicity="1" />
+          <End Role="answer_file" Type="Self.answer_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="variant_file">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_file">
+              <PropertyRef Name="variant_file_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_table_question_else">
+          <End Role="table_question_else" Type="Self.table_question_else" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_question_else">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_table_question_else" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_table_variant1">
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_table_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_table_question">
+          <End Role="table_question" Type="Self.table_question" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_table_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_table_variant">
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_table_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_text_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="answer_text" Type="Self.answer_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_text">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_text_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_text" Type="Self.answer_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_text">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_variant_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_variant" Type="Self.answer_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_variant">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_variant_variant">
+          <End Role="variant" Type="Self.variant" Multiplicity="1" />
+          <End Role="answer_variant" Type="Self.answer_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_variant">
+              <PropertyRef Name="id_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_District">
+          <End Role="areas" Type="Self.areas" Multiplicity="1" />
+          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="districts">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_form_role">
+          <End Role="state" Type="Self.state" Multiplicity="1" />
+          <End Role="form" Type="Self.form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="form">
+              <PropertyRef Name="id_state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_else_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="question_else" Type="Self.question_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question_else">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_form">
+          <End Role="form" Type="Self.form" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="form">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_form" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_type_question">
+          <End Role="type_question" Type="Self.type_question" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_type_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schools_districts">
+          <End Role="districts" Type="Self.districts" Multiplicity="1" />
+          <End Role="schools" Type="Self.schools" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="districts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="schools">
+              <PropertyRef Name="id_district" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_question_else_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_question_else" Type="Self.table_question_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_question_else">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_question_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_question" Type="Self.table_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_question">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_variant_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_variant">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_schools">
+          <End Role="schools" Type="Self.schools" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schools">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_school" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_subjects">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_variant_file_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="variant_file" Type="Self.variant_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="variant_file">
+              <PropertyRef Name="question_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_variant_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="variant" Type="Self.variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="variant">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище anketaModelContainer">
+          <EntitySet Name="answer_else" EntityType="Self.answer_else" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="answer_file" EntityType="Self.answer_file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="answer_table" EntityType="Self.answer_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="answer_table_else" EntityType="Self.answer_table_else" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="answer_text" EntityType="Self.answer_text" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="answer_variant" EntityType="Self.answer_variant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="districts" EntityType="Self.districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="form" EntityType="Self.form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question_else" EntityType="Self.question_else" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schools" EntityType="Self.schools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="state" EntityType="Self.state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sustem_user" EntityType="Self.sustem_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_question" EntityType="Self.table_question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_question_else" EntityType="Self.table_question_else" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_variant" EntityType="Self.table_variant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_question" EntityType="Self.type_question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="variant" EntityType="Self.variant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="variant_file" EntityType="Self.variant_file" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_answer_else_question_else" Association="Self.FK_answer_else_question_else">
+            <End Role="question_else" EntitySet="question_else" />
+            <End Role="answer_else" EntitySet="answer_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_else_user" Association="Self.FK_answer_else_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_else" EntitySet="answer_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_file_user" Association="Self.FK_answer_file_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_file" EntitySet="answer_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_file_variant_file" Association="Self.FK_answer_file_variant_file">
+            <End Role="variant_file" EntitySet="variant_file" />
+            <End Role="answer_file" EntitySet="answer_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_table_question_else" Association="Self.FK_answer_table_else_table_question_else">
+            <End Role="table_question_else" EntitySet="table_question_else" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_table_variant1" Association="Self.FK_answer_table_else_table_variant1">
+            <End Role="table_variant" EntitySet="table_variant" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_user" Association="Self.FK_answer_table_else_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_table_question" Association="Self.FK_answer_table_table_question">
+            <End Role="table_question" EntitySet="table_question" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_table_variant" Association="Self.FK_answer_table_table_variant">
+            <End Role="table_variant" EntitySet="table_variant" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_user" Association="Self.FK_answer_table_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_text_question" Association="Self.FK_answer_text_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="answer_text" EntitySet="answer_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_text_user" Association="Self.FK_answer_text_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_text" EntitySet="answer_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_variant_user" Association="Self.FK_answer_variant_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_variant" EntitySet="answer_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_variant_variant" Association="Self.FK_answer_variant_variant">
+            <End Role="variant" EntitySet="variant" />
+            <End Role="answer_variant" EntitySet="answer_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_District" Association="Self.FK_District_District">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_form_role" Association="Self.FK_form_role">
+            <End Role="state" EntitySet="state" />
+            <End Role="form" EntitySet="form" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_else_question" Association="Self.FK_question_else_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="question_else" EntitySet="question_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_form" Association="Self.FK_question_form">
+            <End Role="form" EntitySet="form" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_type_question" Association="Self.FK_question_type_question">
+            <End Role="type_question" EntitySet="type_question" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schools_districts" Association="Self.FK_schools_districts">
+            <End Role="districts" EntitySet="districts" />
+            <End Role="schools" EntitySet="schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_question_else_question" Association="Self.FK_table_question_else_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_question_else" EntitySet="table_question_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_question_question" Association="Self.FK_table_question_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_question" EntitySet="table_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_variant_question" Association="Self.FK_table_variant_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_variant" EntitySet="table_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_schools" Association="Self.FK_user_schools">
+            <End Role="schools" EntitySet="schools" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_subjects" Association="Self.FK_user_subjects">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_variant_file_question" Association="Self.FK_variant_file_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="variant_file" EntitySet="variant_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_variant_question" Association="Self.FK_variant_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="variant" EntitySet="variant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="anketaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="answer_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_question_else" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="question_else" Relationship="Self.FK_answer_else_question_else" FromRole="answer_else" ToRole="question_else" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_else_user" FromRole="answer_else" ToRole="user" />
+        </EntityType>
+        <EntityType Name="answer_file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="variant_file_id" Type="Int32" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_file_user" FromRole="answer_file" ToRole="user" />
+          <NavigationProperty Name="variant_file" Relationship="Self.FK_answer_file_variant_file" FromRole="answer_file" ToRole="variant_file" />
+        </EntityType>
+        <EntityType Name="answer_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_table_question" Type="Int32" Nullable="false" />
+          <Property Name="id_table_variant" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="table_question" Relationship="Self.FK_answer_table_table_question" FromRole="answer_table" ToRole="table_question" />
+          <NavigationProperty Name="table_variant" Relationship="Self.FK_answer_table_table_variant" FromRole="answer_table" ToRole="table_variant" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_table_user" FromRole="answer_table" ToRole="user" />
+        </EntityType>
+        <EntityType Name="answer_table_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_table_question_else" Type="Int32" Nullable="false" />
+          <Property Name="id_table_variant" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="table_question_else" Relationship="Self.FK_answer_table_else_table_question_else" FromRole="answer_table_else" ToRole="table_question_else" />
+          <NavigationProperty Name="table_variant" Relationship="Self.FK_answer_table_else_table_variant1" FromRole="answer_table_else" ToRole="table_variant" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_table_else_user" FromRole="answer_table_else" ToRole="user" />
+        </EntityType>
+        <EntityType Name="answer_text">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="question" Relationship="Self.FK_answer_text_question" FromRole="answer_text" ToRole="question" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_text_user" FromRole="answer_text" ToRole="user" />
+        </EntityType>
+        <EntityType Name="answer_variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_variant" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_answer_variant_user" FromRole="answer_variant" ToRole="user" />
+          <NavigationProperty Name="variant" Relationship="Self.FK_answer_variant_variant" FromRole="answer_variant" ToRole="variant" />
+        </EntityType>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="districts" Relationship="Self.FK_District_District" FromRole="areas" ToRole="districts" />
+        </EntityType>
+        <EntityType Name="districts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_area" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="areas" Relationship="Self.FK_District_District" FromRole="districts" ToRole="areas" />
+          <NavigationProperty Name="schools" Relationship="Self.FK_schools_districts" FromRole="districts" ToRole="schools" />
+        </EntityType>
+        <EntityType Name="form">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_state" Type="Int32" Nullable="false" />
+          <Property Name="date_start" Type="DateTime" Precision="3" />
+          <Property Name="text_after" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text_start" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text_before_send" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="state" Relationship="Self.FK_form_role" FromRole="form" ToRole="state" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_form" FromRole="form" ToRole="question" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_type_question" Type="Int32" Nullable="false" />
+          <Property Name="id_form" Type="Int32" Nullable="false" />
+          <Property Name="is_required" Type="Boolean" Nullable="false" />
+          <Property Name="img_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="video_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="answer_text" Relationship="Self.FK_answer_text_question" FromRole="question" ToRole="answer_text" />
+          <NavigationProperty Name="form" Relationship="Self.FK_question_form" FromRole="question" ToRole="form" />
+          <NavigationProperty Name="question_else" Relationship="Self.FK_question_else_question" FromRole="question" ToRole="question_else" />
+          <NavigationProperty Name="type_question" Relationship="Self.FK_question_type_question" FromRole="question" ToRole="type_question" />
+          <NavigationProperty Name="table_question_else" Relationship="Self.FK_table_question_else_question" FromRole="question" ToRole="table_question_else" />
+          <NavigationProperty Name="table_question" Relationship="Self.FK_table_question_question" FromRole="question" ToRole="table_question" />
+          <NavigationProperty Name="table_variant" Relationship="Self.FK_table_variant_question" FromRole="question" ToRole="table_variant" />
+          <NavigationProperty Name="variant_file" Relationship="Self.FK_variant_file_question" FromRole="question" ToRole="variant_file" />
+          <NavigationProperty Name="variant" Relationship="Self.FK_variant_question" FromRole="question" ToRole="variant" />
+        </EntityType>
+        <EntityType Name="question_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="answer_else" Relationship="Self.FK_answer_else_question_else" FromRole="question_else" ToRole="answer_else" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_else_question" FromRole="question_else" ToRole="question" />
+        </EntityType>
+        <EntityType Name="schools">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_district" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="districts" Relationship="Self.FK_schools_districts" FromRole="schools" ToRole="districts" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_schools" FromRole="schools" ToRole="user" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="form" Relationship="Self.FK_form_role" FromRole="state" ToRole="form" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_subjects" FromRole="subjects" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sustem_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronumic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="table_question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_table" Relationship="Self.FK_answer_table_table_question" FromRole="table_question" ToRole="answer_table" />
+          <NavigationProperty Name="question" Relationship="Self.FK_table_question_question" FromRole="table_question" ToRole="question" />
+        </EntityType>
+        <EntityType Name="table_question_else">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_table_else" Relationship="Self.FK_answer_table_else_table_question_else" FromRole="table_question_else" ToRole="answer_table_else" />
+          <NavigationProperty Name="question" Relationship="Self.FK_table_question_else_question" FromRole="table_question_else" ToRole="question" />
+        </EntityType>
+        <EntityType Name="table_variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_table" Relationship="Self.FK_answer_table_table_variant" FromRole="table_variant" ToRole="answer_table" />
+          <NavigationProperty Name="answer_table_else" Relationship="Self.FK_answer_table_else_table_variant1" FromRole="table_variant" ToRole="answer_table_else" />
+          <NavigationProperty Name="question" Relationship="Self.FK_table_variant_question" FromRole="table_variant" ToRole="question" />
+        </EntityType>
+        <EntityType Name="type_question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_type_question" FromRole="type_question" ToRole="question" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_school" Type="Int32" Nullable="false" />
+          <Property Name="id_subject" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_else" Relationship="Self.FK_answer_else_user" FromRole="user" ToRole="answer_else" />
+          <NavigationProperty Name="answer_file" Relationship="Self.FK_answer_file_user" FromRole="user" ToRole="answer_file" />
+          <NavigationProperty Name="answer_table" Relationship="Self.FK_answer_table_user" FromRole="user" ToRole="answer_table" />
+          <NavigationProperty Name="answer_table_else" Relationship="Self.FK_answer_table_else_user" FromRole="user" ToRole="answer_table_else" />
+          <NavigationProperty Name="answer_text" Relationship="Self.FK_answer_text_user" FromRole="user" ToRole="answer_text" />
+          <NavigationProperty Name="answer_variant" Relationship="Self.FK_answer_variant_user" FromRole="user" ToRole="answer_variant" />
+          <NavigationProperty Name="schools" Relationship="Self.FK_user_schools" FromRole="user" ToRole="schools" />
+          <NavigationProperty Name="subjects" Relationship="Self.FK_user_subjects" FromRole="user" ToRole="subjects" />
+        </EntityType>
+        <EntityType Name="variant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_variant" Relationship="Self.FK_answer_variant_variant" FromRole="variant" ToRole="answer_variant" />
+          <NavigationProperty Name="question" Relationship="Self.FK_variant_question" FromRole="variant" ToRole="question" />
+        </EntityType>
+        <EntityType Name="variant_file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="question_id" Type="Int32" Nullable="false" />
+          <Property Name="max_size_file" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer_file" Relationship="Self.FK_answer_file_variant_file" FromRole="variant_file" ToRole="answer_file" />
+          <NavigationProperty Name="question" Relationship="Self.FK_variant_file_question" FromRole="variant_file" ToRole="question" />
+        </EntityType>
+        <Association Name="FK_answer_else_question_else">
+          <End Role="question_else" Type="Self.question_else" Multiplicity="1" />
+          <End Role="answer_else" Type="Self.answer_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_else">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_else">
+              <PropertyRef Name="id_question_else" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_else_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_else" Type="Self.answer_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_else">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_file_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_file" Type="Self.answer_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_file">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_file_variant_file">
+          <End Role="variant_file" Type="Self.variant_file" Multiplicity="1" />
+          <End Role="answer_file" Type="Self.answer_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="variant_file">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_file">
+              <PropertyRef Name="variant_file_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_table_question">
+          <End Role="table_question" Type="Self.table_question" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_table_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_table_variant">
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_table_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_table_question_else">
+          <End Role="table_question_else" Type="Self.table_question_else" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_question_else">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_table_question_else" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_table_variant1">
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_table_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_table_else_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_table_else" Type="Self.answer_table_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_table_else">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_text_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="answer_text" Type="Self.answer_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_text">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_text_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_text" Type="Self.answer_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_text">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_variant_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="answer_variant" Type="Self.answer_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_variant">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_variant_variant">
+          <End Role="variant" Type="Self.variant" Multiplicity="1" />
+          <End Role="answer_variant" Type="Self.answer_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="variant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="answer_variant">
+              <PropertyRef Name="id_variant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_District">
+          <End Role="areas" Type="Self.areas" Multiplicity="1" />
+          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="districts">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schools_districts">
+          <End Role="districts" Type="Self.districts" Multiplicity="1" />
+          <End Role="schools" Type="Self.schools" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="districts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="schools">
+              <PropertyRef Name="id_district" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_form_role">
+          <End Role="state" Type="Self.state" Multiplicity="1" />
+          <End Role="form" Type="Self.form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="form">
+              <PropertyRef Name="id_state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_form">
+          <End Role="form" Type="Self.form" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="form">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_form" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_else_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="question_else" Type="Self.question_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question_else">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_type_question">
+          <End Role="type_question" Type="Self.type_question" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_type_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_question_else_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_question_else" Type="Self.table_question_else" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_question_else">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_question_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_question" Type="Self.table_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_question">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_table_variant_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="table_variant" Type="Self.table_variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="table_variant">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_variant_file_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="variant_file" Type="Self.variant_file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="variant_file">
+              <PropertyRef Name="question_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_variant_question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="variant" Type="Self.variant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="variant">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_schools">
+          <End Role="schools" Type="Self.schools" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schools">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_school" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_subjects">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="anketaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="answer_else" EntityType="Self.answer_else" />
+          <EntitySet Name="answer_file" EntityType="Self.answer_file" />
+          <EntitySet Name="answer_table" EntityType="Self.answer_table" />
+          <EntitySet Name="answer_table_else" EntityType="Self.answer_table_else" />
+          <EntitySet Name="answer_text" EntityType="Self.answer_text" />
+          <EntitySet Name="answer_variant" EntityType="Self.answer_variant" />
+          <EntitySet Name="areas" EntityType="Self.areas" />
+          <EntitySet Name="districts" EntityType="Self.districts" />
+          <EntitySet Name="form" EntityType="Self.form" />
+          <EntitySet Name="question" EntityType="Self.question" />
+          <EntitySet Name="question_else" EntityType="Self.question_else" />
+          <EntitySet Name="schools" EntityType="Self.schools" />
+          <EntitySet Name="state" EntityType="Self.state" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" />
+          <EntitySet Name="sustem_user" EntityType="Self.sustem_user" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="table_question" EntityType="Self.table_question" />
+          <EntitySet Name="table_question_else" EntityType="Self.table_question_else" />
+          <EntitySet Name="table_variant" EntityType="Self.table_variant" />
+          <EntitySet Name="type_question" EntityType="Self.type_question" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="variant" EntityType="Self.variant" />
+          <EntitySet Name="variant_file" EntityType="Self.variant_file" />
+          <AssociationSet Name="FK_answer_else_question_else" Association="Self.FK_answer_else_question_else">
+            <End Role="question_else" EntitySet="question_else" />
+            <End Role="answer_else" EntitySet="answer_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_else_user" Association="Self.FK_answer_else_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_else" EntitySet="answer_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_file_user" Association="Self.FK_answer_file_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_file" EntitySet="answer_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_file_variant_file" Association="Self.FK_answer_file_variant_file">
+            <End Role="variant_file" EntitySet="variant_file" />
+            <End Role="answer_file" EntitySet="answer_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_table_question" Association="Self.FK_answer_table_table_question">
+            <End Role="table_question" EntitySet="table_question" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_table_variant" Association="Self.FK_answer_table_table_variant">
+            <End Role="table_variant" EntitySet="table_variant" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_user" Association="Self.FK_answer_table_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_table" EntitySet="answer_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_table_question_else" Association="Self.FK_answer_table_else_table_question_else">
+            <End Role="table_question_else" EntitySet="table_question_else" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_table_variant1" Association="Self.FK_answer_table_else_table_variant1">
+            <End Role="table_variant" EntitySet="table_variant" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_table_else_user" Association="Self.FK_answer_table_else_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_table_else" EntitySet="answer_table_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_text_question" Association="Self.FK_answer_text_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="answer_text" EntitySet="answer_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_text_user" Association="Self.FK_answer_text_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_text" EntitySet="answer_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_variant_user" Association="Self.FK_answer_variant_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="answer_variant" EntitySet="answer_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_variant_variant" Association="Self.FK_answer_variant_variant">
+            <End Role="variant" EntitySet="variant" />
+            <End Role="answer_variant" EntitySet="answer_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_District" Association="Self.FK_District_District">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schools_districts" Association="Self.FK_schools_districts">
+            <End Role="districts" EntitySet="districts" />
+            <End Role="schools" EntitySet="schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_form_role" Association="Self.FK_form_role">
+            <End Role="state" EntitySet="state" />
+            <End Role="form" EntitySet="form" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_form" Association="Self.FK_question_form">
+            <End Role="form" EntitySet="form" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_else_question" Association="Self.FK_question_else_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="question_else" EntitySet="question_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_type_question" Association="Self.FK_question_type_question">
+            <End Role="type_question" EntitySet="type_question" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_question_else_question" Association="Self.FK_table_question_else_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_question_else" EntitySet="table_question_else" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_question_question" Association="Self.FK_table_question_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_question" EntitySet="table_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_table_variant_question" Association="Self.FK_table_variant_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="table_variant" EntitySet="table_variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_variant_file_question" Association="Self.FK_variant_file_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="variant_file" EntitySet="variant_file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_variant_question" Association="Self.FK_variant_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="variant" EntitySet="variant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_schools" Association="Self.FK_user_schools">
+            <End Role="schools" EntitySet="schools" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_subjects" Association="Self.FK_user_subjects">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище anketaModelContainer" CdmEntityContainer="anketaEntities">
+          <EntitySetMapping Name="answer_else">
+            <EntityTypeMapping TypeName="anketaModel.answer_else">
+              <MappingFragment StoreEntitySet="answer_else">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question_else" ColumnName="id_question_else" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answer_file">
+            <EntityTypeMapping TypeName="anketaModel.answer_file">
+              <MappingFragment StoreEntitySet="answer_file">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="variant_file_id" ColumnName="variant_file_id" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answer_table">
+            <EntityTypeMapping TypeName="anketaModel.answer_table">
+              <MappingFragment StoreEntitySet="answer_table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_table_question" ColumnName="id_table_question" />
+                <ScalarProperty Name="id_table_variant" ColumnName="id_table_variant" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answer_table_else">
+            <EntityTypeMapping TypeName="anketaModel.answer_table_else">
+              <MappingFragment StoreEntitySet="answer_table_else">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_table_question_else" ColumnName="id_table_question_else" />
+                <ScalarProperty Name="id_table_variant" ColumnName="id_table_variant" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answer_text">
+            <EntityTypeMapping TypeName="anketaModel.answer_text">
+              <MappingFragment StoreEntitySet="answer_text">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answer_variant">
+            <EntityTypeMapping TypeName="anketaModel.answer_variant">
+              <MappingFragment StoreEntitySet="answer_variant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_variant" ColumnName="id_variant" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="anketaModel.areas">
+              <MappingFragment StoreEntitySet="areas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="districts">
+            <EntityTypeMapping TypeName="anketaModel.districts">
+              <MappingFragment StoreEntitySet="districts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_area" ColumnName="id_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="form">
+            <EntityTypeMapping TypeName="anketaModel.form">
+              <MappingFragment StoreEntitySet="form">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_state" ColumnName="id_state" />
+                <ScalarProperty Name="date_start" ColumnName="date_start" />
+                <ScalarProperty Name="text_after" ColumnName="text_after" />
+                <ScalarProperty Name="text_start" ColumnName="text_start" />
+                <ScalarProperty Name="text_before_send" ColumnName="text_before_send" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question">
+            <EntityTypeMapping TypeName="anketaModel.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_type_question" ColumnName="id_type_question" />
+                <ScalarProperty Name="id_form" ColumnName="id_form" />
+                <ScalarProperty Name="is_required" ColumnName="is_required" />
+                <ScalarProperty Name="img_url" ColumnName="img_url" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="video_url" ColumnName="video_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question_else">
+            <EntityTypeMapping TypeName="anketaModel.question_else">
+              <MappingFragment StoreEntitySet="question_else">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schools">
+            <EntityTypeMapping TypeName="anketaModel.schools">
+              <MappingFragment StoreEntitySet="schools">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_district" ColumnName="id_district" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="state">
+            <EntityTypeMapping TypeName="anketaModel.state">
+              <MappingFragment StoreEntitySet="state">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="anketaModel.subjects">
+              <MappingFragment StoreEntitySet="subjects">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sustem_user">
+            <EntityTypeMapping TypeName="anketaModel.sustem_user">
+              <MappingFragment StoreEntitySet="sustem_user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronumic" ColumnName="patronumic" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="anketaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_question">
+            <EntityTypeMapping TypeName="anketaModel.table_question">
+              <MappingFragment StoreEntitySet="table_question">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_question_else">
+            <EntityTypeMapping TypeName="anketaModel.table_question_else">
+              <MappingFragment StoreEntitySet="table_question_else">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_variant">
+            <EntityTypeMapping TypeName="anketaModel.table_variant">
+              <MappingFragment StoreEntitySet="table_variant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_question">
+            <EntityTypeMapping TypeName="anketaModel.type_question">
+              <MappingFragment StoreEntitySet="type_question">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="anketaModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="id_school" ColumnName="id_school" />
+                <ScalarProperty Name="id_subject" ColumnName="id_subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="variant">
+            <EntityTypeMapping TypeName="anketaModel.variant">
+              <MappingFragment StoreEntitySet="variant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="variant_file">
+            <EntityTypeMapping TypeName="anketaModel.variant_file">
+              <MappingFragment StoreEntitySet="variant_file">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="question_id" ColumnName="question_id" />
+                <ScalarProperty Name="max_size_file" ColumnName="max_size_file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

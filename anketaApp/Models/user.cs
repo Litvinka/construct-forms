@@ -18,6 +18,7 @@ namespace anketaApp.Models
         public user()
         {
             this.answer_else = new HashSet<answer_else>();
+            this.answer_file = new HashSet<answer_file>();
             this.answer_table = new HashSet<answer_table>();
             this.answer_table_else = new HashSet<answer_table_else>();
             this.answer_text = new HashSet<answer_text>();
@@ -26,9 +27,13 @@ namespace anketaApp.Models
     
         public int id { get; set; }
         public string ip { get; set; }
+        public int id_school { get; set; }
+        public int id_subject { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<answer_else> answer_else { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<answer_file> answer_file { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<answer_table> answer_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -37,5 +42,7 @@ namespace anketaApp.Models
         public virtual ICollection<answer_text> answer_text { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<answer_variant> answer_variant { get; set; }
+        public virtual schools schools { get; set; }
+        public virtual subjects subjects { get; set; }
     }
 }

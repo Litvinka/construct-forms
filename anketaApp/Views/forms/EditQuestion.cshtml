@@ -1,0 +1,96 @@
+﻿@model anketaApp.Models.question
+
+@{ViewBag.Title = "Редактирование вопроса"; }
+
+<div class="form_details">
+    <a href="@Url.Action("Details","Forms",new {id=Model.id_form })">Вернуться к форме</a>
+    <div class="row form_head">
+        <div class="col-md-6">
+            <h2>Редактирование вопроса</h2>
+        </div>
+        <div class="col-md-6">
+            <h4>Тип вопроса: <b>@Model.type_question.name</b></h4>
+        </div>
+    </div>
+
+    <form id="edit_question" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@Model.id" />
+    <input type="hidden" id="type_q" value="@Model.id_type_question" />
+    <div class="form-group">
+        <label for="text_quest">Вопрос</label>
+        <input class="form-control" required id="text_quest" name="text_quest" value="@Model.name">
+    </div>
+    <label for="number_ask">Номер вопроса</label><div class="form-group"><input type="number" class="form-control" value="@Model.number" id="number_ask" name="number_ask"></div>
+    <label for="file">Картинка к вопросу</label>
+    @if (Model.img_url != null)
+        {
+            <div class="quest_img">
+                <img src="@Model.img_url" />
+            </div>
+        }
+    <div class="form-group"><input class="form-control" type="file" id="file" name="file" value="@Model.img_url"><h6>Размер файла не должен превышать 3 мб</h6></div>
+    <div class="block_error"><p class="p_error">Превышен размер файла</p></div>
+    <label for="video">Ссылка на видео из Youtube</label><div class="form-group"><input class="form-control" value="@Model.video_url" id="video" name="video"></div>
+    <label for="comment">Комментарий</label><div class="form-group"><textarea class="form-control" id="comment" name="comment">@Model.comment</textarea></div>
+    <label for="is_required">Обязательный вопрос?</label>
+    <div class="radio_required">
+        <div class="form-group">
+            <label>
+                <input type="radio" id="is_required" name="is_required" @if (Model.is_required) { Write("checked"); } value="1"><span>Да</span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="radio" id="is_required" name="is_required" @if (!Model.is_required) { Write("checked"); } value='0'><span>Нет</span>
+            </label>
+        </div>
+    </div>
+    @if (Model.id_type_question == 2)
+    {
+        <div class="radio">
+            @Html.Action("_radio_edit", "Forms", new { quest_id = Model.id })
+            <p class="p_add">
+                <a href="#" onclick="event.preventDefault(); AddVariant(@Model.id_type_question);" id="add_variant">Добавить вариант</a> <span>или</span> <a href="#" class="else_variant" onclick="event.preventDefault(); AddElse(@Model.id_type_question);">Вариант "ДРУГОЕ"</a>
+            </p>
+        </div>
+    }
+    else if (Model.id_type_question == 3)
+    {
+        <div class="checkbox">
+            @Html.Action("_checkbox_edit", "Forms", new { quest_id = Model.id })
+            <p class="p_add">
+            <a href="#" onclick="event.preventDefault(); AddVariant(@Model.id_type_question);" id="add_variant">Добавить вариант</a> <span>или</span> <a href="#" class="else_variant" onclick="event.preventDefault(); AddElse(@Model.id_type_question);">Вариант "ДРУГОЕ"</a></p>
+        </div>
+    }
+    else if (Model.id_type_question == 4)
+    {
+        <div class="select">
+            @Html.Action("_select_edit", "Forms", new { quest_id = Model.id })
+            <p class="p_add">
+            <a href="#" onclick="event.preventDefault(); AddVariant(@Model.id_type_question);" id="add_variant">Добавить вариант</a> <span>или</span> <a href="#" class="else_variant" onclick="event.preventDefault(); AddElse(@Model.id_type_question);">Вариант "ДРУГОЕ"</a></p>
+        </div>
+    }
+    else if (Model.id_type_question == 5)
+    {
+        <div class="tabl"> 
+                @Html.Action("_table_radio_edit", "Forms", new { quest_id = Model.id })
+        </div>
+    }
+    else if (Model.id_type_question == 6)
+    {
+        <div class="table"> 
+            @Html.Action("_table_checkbox_edit", "Forms", new { quest_id = Model.id })
+        </div>
+    }
+    else if (Model.id_type_question == 7)
+    {
+        <div class="for_file"> 
+            <div class="form-group">
+                <label id="file_label" for="file"><span>Максимальный размер файла: </span><input class="form-control" value="@Model.variant_file.First(p=>p.question_id==Model.id).max_size_file" type="number" min="1" max="20" id="file" name="file" required /> <span> мб</span></label>
+            </div>
+        </div>
+    }
+        <div class="form-group col-md-12"><input type="submit" class="btn btn-primary center-block" value="Сохранить изменения" /></div>
+    </form>
+
+</div>

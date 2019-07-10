@@ -1,0 +1,17 @@
+﻿@model anketaApp.Models.question
+@{ViewBag.Title = "Просмотр видео"; }
+
+<div class="form_details">
+    <h4>Просмотр видео</h4>
+    @if (Model.video_url.Contains("youtube"))
+    {
+        <iframe width="800" height="500" src="@Model.video_url" frameborder="0" allowfullscreen></iframe>
+    }
+    else
+    {
+        <video width="800" height="500" controls="controls">
+            <source src="@Model.video_url">
+            Тег video не поддерживается вашим браузером.
+        </video>
+    }
+ </div>

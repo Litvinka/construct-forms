@@ -1,57 +1,106 @@
 ﻿@model anketaApp.Models.form
 
-@{
-    Layout = null;
-}
+@{ViewBag.Title = "Редактирование формы"; }
 
-<!DOCTYPE html>
+@if (Session["user_id"] != null)
+{
+<dialog id="del_form" title="Удаление формы">
+    <p>Вы уверены, что хотите удалить данную форму?</p>
+    <a class="btn btn-default" id="close_form">Отмена</a>
+    <a href="@Url.Action("DelForm", "Forms", new { id = Model.id })" class="btn btn-danger">Удалить</a>
+</dialog>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>form</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.id)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.id_role, "id_role", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("id_role", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.id_role, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
+<div class="form_details">
+
+    <div class="row form_head">
+        <div class="col-md-12">
+            <h2>Редактирование данных формы</h2>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+                @Html.HiddenFor(model => model.date_start)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, "Название формы", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="state">Сбор информации</label>
+                    <div class="col-md-10">
+                        <input class="state_anketa" value="1" name="state" id="state" type="checkbox" @if (Model.id_state == 1) { Write("checked"); }/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="text_start">Текст в начале анкеты</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.text_start, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="text_before_send">Текст перед отправкой анкеты</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.text_before_send, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="text_after">Сообщение после отправки</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.text_after, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Сохранить" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    <div class="row form_head">
+        <div class="col-md-12">
+            <h2>Получение результатов</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="@Url.Action("ExportExcel", "Anketa", new { form_id = Model.id })"><img class="l_icon" src="~/Content/icons/file.svg"/> <span>Скачать .excel данные</span></a>
+        </div>
+        <div class="col-md-4">
+            <a href="@Url.Action("ExportStatistics", "Anketa", new { form_id = Model.id })"><img class="l_icon" src="~/Content/icons/file.svg" /> <span>Скачать статистические данные</span></a>
+        </div>
+        <div class="col-md-4">
+            <a href="@Url.Action("ExportZip", "Anketa", new { form_id = Model.id })"><img class="l_icon" src="~/Content/icons/folder.svg"/> <span>Скачать папку с файлами</span></a>
+        </div>
+    </div>
+
+    <div class="row form_head">
+        <div class="col-md-12">
+            <h2>Удаление формы</h2>
+        </div>
+    </div>
+    <div class="row">
+        <a id="del_form_button" class="btn btn-default">Удалить форму</a>
+    </div>
+    
+
+
+</div>
+}
+else{
+    <p>У Вас нет доступа к содержимому страницы</p>
+}

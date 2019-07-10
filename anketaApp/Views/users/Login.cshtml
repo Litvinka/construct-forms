@@ -1,0 +1,36 @@
+﻿@model IEnumerable<anketaApp.Models.form>
+
+@{ViewBag.Title = "Вход"; }
+
+<div class="form_details">
+
+    <div class="row form_head">
+        <div class="col-md-12 text-center">
+            <h2>Вход</h2>
+        </div>
+    </div>
+
+    <div class="form_login">
+        <form name="login" method="post">
+            <p class="p_error">@if (ViewBag.error != null) { @ViewBag.error; }</p>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="email1">Email:</label>
+                    <input type="email" class="form-control" name="email" id="email1" placeholder="Введите Email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="password">Пароль:</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <input type="submit" value="Войти" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -46,13 +46,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -156,73 +168,96 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnketaController.cs" />
     <Compile Include="Controllers\formsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\answer_else.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\answer_file.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\answer_table.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\answer_table_else.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\answer_text.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\answer_variant.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\areas.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\districts.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\form.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\question.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\question_else.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\role.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Models\rkrModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rkrModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rkrModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rkrModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rkrModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\schools.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\state.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\subjects.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sustem_user.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\table_question.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\table_question_else.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\table_variant.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\type_question.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\variant.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>rkrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\variant_file.cs">
+      <DependentUpon>rkrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,33 +266,50 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\icons\cancel-music.svg" />
+    <Content Include="Content\icons\delete.svg" />
+    <Content Include="Content\icons\edit.png" />
+    <Content Include="Content\icons\edit.svg" />
+    <Content Include="Content\icons\file.svg" />
+    <Content Include="Content\icons\folder.svg" />
+    <Content Include="Content\icons\minus.svg" />
+    <Content Include="Content\icons\passage-of-time.svg" />
+    <Content Include="Content\icons\plus-sign-in-a-black-circle.svg" />
+    <Content Include="Content\icons\settings.svg" />
+    <Content Include="Content\icons\top.svg" />
+    <Content Include="Content\icons\zoom-in.svg" />
+    <Content Include="Content\video\занимательная физика.mp4" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Models\rkrModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>rkrModel.edmx</DependentUpon>
+      <LastGenOutput>rkrModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Models\rkrModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>rkrModel.edmx</DependentUpon>
+      <LastGenOutput>rkrModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
-    <EntityDeploy Include="Models\Model.edmx">
+    <EntityDeploy Include="Models\rkrModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>rkrModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <Content Include="Models\rkrModel.edmx.diagram">
+      <DependentUpon>rkrModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Choose_school.js" />
+    <Content Include="Scripts\CreateForm.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -267,35 +319,65 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\large_file.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\required.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\forms\Create.cshtml" />
     <Content Include="Views\forms\Delete.cshtml" />
     <Content Include="Views\forms\Details.cshtml" />
     <Content Include="Views\forms\Edit.cshtml" />
     <Content Include="Views\forms\Index.cshtml" />
+    <Content Include="Views\forms\_all_questions.cshtml" />
+    <Content Include="Views\forms\_radio.cshtml" />
+    <Content Include="Views\forms\_checkbox.cshtml" />
+    <Content Include="Views\forms\_select.cshtml" />
+    <Content Include="Views\forms\_table_checkbox.cshtml" />
+    <Content Include="Views\forms\_table_radio.cshtml" />
+    <Content Include="Views\Anketa\details.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\users\Login.cshtml" />
+    <Content Include="Views\Anketa\Send.cshtml" />
+    <Content Include="Views\forms\EditQuestion.cshtml" />
+    <Content Include="Views\forms\_radio_edit.cshtml" />
+    <Content Include="Views\forms\_checkbox_edit.cshtml" />
+    <Content Include="Views\forms\_select_edit.cshtml" />
+    <Content Include="Views\forms\_table_checkbox_edit.cshtml" />
+    <Content Include="Views\forms\_table_radio_edit.cshtml" />
+    <Content Include="Views\Anketa\video.cshtml" />
+    <Content Include="Views\forms\_questions_school.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\files\" />
+    <Folder Include="Content\quest_file\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />

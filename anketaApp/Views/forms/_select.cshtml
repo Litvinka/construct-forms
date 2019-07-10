@@ -1,0 +1,12 @@
+﻿@model IEnumerable<anketaApp.Models.variant>
+
+<div class="form-group @if (Model.Count()>0 && Model.ElementAt(0).question.is_required == true) { Write("required_select"); }">
+    <select class="form-control" name="select_@Model.ElementAt(0).id_question">
+        <option value="">Выберите из списка</option>
+        @foreach (var item in Model)
+        {
+            <option value="@item.id">@item.name</option>
+        }
+    </select>
+</div>
+

@@ -1,47 +1,39 @@
 ﻿@model IEnumerable<anketaApp.Models.form>
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+@{ViewBag.Title = "Список форм"; }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.role.name)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.role.name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<div class="form_details">
+
+    <div class="row form_head">
+        <div class="col-md-12">
+            <h2>Список форм</h2>
+        </div>
+    </div>
+
+    <div class="forms_list">
+
+        @foreach (var item in Model)
+        {
+            <div class="one_form">
+                <h3>@item.name</h3>
+                <h6 class="date_h6">@item.date_start</h6>
+                <h5>
+                    <img class="icon" src="~/Content/icons/passage-of-time.svg" /> 
+                    @if (item.id_state == 1)
+                    { <b>Информация собирается</b> }
+                    else
+                    { <b>Информация не собирается</b> }
+                </h5>
+                <h6>Количество участников: @item.getCountUser()</h6>
+                <a class="btn btn-default" href="@Url.Action("Details","Forms",new { id=item.id})">просмотреть</a>
+             </div>
+        }
+
+    </div>
+
+    <div class="add_form">
+        <a href="/forms/create" class="btn btn-success">Добавить форму</a>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+﻿@model anketaApp.Models.form
+@{ViewBag.Title = "Ответы отправлены"; }
+
+<div class="form_details">
+    <h4>@Model.text_after</h4>
+    <a href="@Url.Action("Details", "Anketa", new { id = Model.id })" class="btn btn-primary">Вернуться к анкете </a>
+ </div>

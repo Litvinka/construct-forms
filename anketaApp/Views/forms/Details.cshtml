@@ -1,42 +1,65 @@
 ﻿@model anketaApp.Models.form
 
-@{
-    Layout = null;
-}
+@{ViewBag.Title = Model.name; }
 
-<!DOCTYPE html>
+@if (Session["user_id"] != null)
+{
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>form</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.role.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.role.name)
-            </dd>
-    
-        </dl>
+<div class="bg_l_image">
+</div>
+<div class="large_image_div">
+    <img id="l_image" src="" />
+    <img class="close_icon" src="~/Content/icons/cancel-music.svg" />
+</div>
+
+<div class="form_details">
+    <a id="prev" href="@Url.Action("Index", "Forms")">Назад</a>
+    <div class="row form_head">
+        <div class="col-md-12 name_h2">
+            <h2>@Model.name</h2>
+        </div>
+        <a href="@Url.Action("Edit", "Forms", new { id = Model.id })"><img class="icon" src="~/Content/icons/edit.svg" title="Редактировать данные формы" /></a>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    <div class="row form_head">
+        <div class="col-md-12">
+            @if (Model.id_state == 1)
+            {<h4>Ссылка на анкету: <a href="@Url.Action("Details", "Anketa", new { id = Model.id })">anketa.unibel.by/Anketa/Details/@Model.id</a></h4>}
+            else
+            {
+                <h4>Анкета закрыта для сбора данных</h4>
+            }
+        </div>
+    </div>
+
+
+    <div class="construct row">
+
+        <div class="list_question">
+            @Html.Action("_questions_school", "Forms", new { form_id = Model.id })
+            @Html.Action("_all_questions", "Forms", new { form_id = Model.id })
+        </div>
+        
+        <div class="add_one_question" id="addask">
+            <img class="l_icon" id="img_add_question" src="~/Content/icons/plus-sign-in-a-black-circle.svg" title="Добавить вопрос"/>
+        </div>
+
+        <div id="one_questions" class="col-md-12">
+                <h3>Добавление нового вопроса</h3>
+                <div class="form-group">
+                    <label for="type_quest">Тип вопроса:</label>
+                    <input type="hidden" value="@Model.id" id="form_id"/>
+                    @Html.DropDownList("type_quest", null, "", htmlAttributes: new { @class = "form-control" })
+                </div>
+            <div id="new_question">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+}
+else
+{
+    <p>У Вас нет доступа к содержимому страницы</p>
+}

@@ -1,0 +1,32 @@
+﻿@model anketaApp.Models.form
+
+@{ViewBag.Title = @Model.name; }
+
+<div class="form_details">
+    @if (Model.id_state == 1) { 
+    <div class="row form_head">
+        <div class="col-md-12">
+            <h2>@Model.name</h2>
+        </div>
+    </div>
+
+    <div class="construct row">
+        <div class="list_question">
+            <form method="post" id="anketa_form" enctype="multipart/form-data" action="/Anketa/AddAnswers">
+                <input type="hidden" name="form_id" value="@Model.id" />
+                @Html.Action("_questions_school", "Forms", new { form_id = Model.id })
+                @Html.Action("_all_questions", "Forms", new { form_id = Model.id })
+                <div class="form-group">
+                    <input type="submit" value="Отправить" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+    }
+    else
+    {
+        <div class="col-md-12">
+            <h2>Анкета "@Model.name" закрыта для сбора данных</h2>
+        </div>
+    }
+</div>

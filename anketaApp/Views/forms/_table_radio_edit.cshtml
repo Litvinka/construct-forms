@@ -1,0 +1,28 @@
+﻿@model IEnumerable<anketaApp.Models.table_question>
+<div class="table_row col-md-6">
+    <label for="table_row">Список строк:</label>
+    <ul>
+        @for (int i = 0; i < Model.Count();++i)
+        {
+            <li class="form-group">
+                <input class="form-control" id="table_row" name="table_row" value="@Model.ElementAt(i).name" required />
+                @if (Model.Count() > 0)
+                {<img class="icon del_variant" onclick="event.target.parentNode.parentNode.removeChild(event.target.parentNode);" src="/Content/icons/minus.svg">}
+            </li>
+        }
+    </ul>
+    <p class="p_add"><a href="#" onclick="event.preventDefault(); AddRow();"><img class="icon" title="Добавить строку" src="/Content/icons/plus-sign-in-a-black-circle.svg"></a></p>
+</div>
+<div class="table_col col-md-6">
+    <label>Список столбцов:</label>
+    <ul>
+        @foreach (var c in ViewBag.cols)
+        {
+            <li class="form-group">
+                <input type="radio" disabled /><input class="form-control" value="@c.name" name="table_col" required />
+                <img class="icon del_variant" onclick="event.target.parentNode.parentNode.removeChild(event.target.parentNode);" src="/Content/icons/minus.svg">
+            </li>
+        }
+    </ul>
+    <p class="p_add"><a href="#" onclick="event.preventDefault(); AddCol(1);"><img class="icon" title="Добавить столбец" src="/Content/icons/plus-sign-in-a-black-circle.svg"></a></p>
+</div>

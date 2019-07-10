@@ -1,0 +1,99 @@
+﻿@model IEnumerable<anketaApp.Models.question>
+
+
+<div class="text_for_form">
+    <p>@if (Model.Count() > 0) { @Model.First().form.text_start }</p>
+</div>
+
+@for(int i=0;i<Model.Count();++i) {
+
+    <div class="block_question">
+        @if (Model.ElementAt(i).form.id_state == 2)
+        {
+            <a href="@Url.Action("EditQuestion","forms",new { id=Model.ElementAt(i).id})" class="edit_q_btn"><img class="icon" src="~/Content/icons/edit.png" /></a>
+            <a href="@Url.Action("DeleteQuestion","forms",new { id=Model.ElementAt(i).id})" class="del_btn"><img class="icon" src="~/Content/icons/delete.svg"/></a>
+        }
+        <h4>@Model.ElementAt(i).name @if(Model.ElementAt(i).is_required){<span class="span_error">*</span>}</h4>
+        @if (Model.ElementAt(i).img_url != null)
+        {
+            <div class="quest_img">
+                <img src="@Model.ElementAt(i).img_url" />
+                <img class="l_icon loop" src="~/Content/icons/zoom-in.svg" />
+            </div>
+        }
+        @if (Model.ElementAt(i).video_url !=null && !Model.ElementAt(i).video_url.Trim().Equals(""))
+        {
+            <div>
+                <a href="@Url.Action("video","Anketa",new { id=Model.ElementAt(i).id})" target="_blank">Посмотреть видео</a>
+            </div>
+        }
+        @if (Model.ElementAt(i).comment != null) {
+            <h5 class="comment_quest">@Model.ElementAt(i).comment</h5>
+        }
+        @if (Model.ElementAt(i).id_type_question == 1)
+        {
+            <div class="form-group @if (Model.ElementAt(i).is_required == true) { Write("required_text"); } ">
+                <textarea class="form-control" type="text" name="text_@Model.ElementAt(i).id" placeholder="Введите ответ" ></textarea>
+            </div>
+        }
+        else if (Model.ElementAt(i).id_type_question == 2)
+        {
+            @Html.Action("_radio", "Forms", new { quest_id = Model.ElementAt(i).id })
+            if (Model.ElementAt(i).question_else.Count(p => p.id_question == Model.ElementAt(i).id) > 0)
+            {
+                <div class="form-group">
+                    <label>@Model.ElementAt(i).question_else.First(p => p.id_question == Model.ElementAt(i).id).name</label>
+                    <input class="form-control" type="text" name="else_@Model.ElementAt(i).id" placeholder="Введите свой вариант" />
+                </div>
+            }
+        }
+        else if (Model.ElementAt(i).id_type_question == 3)
+        {
+            @Html.Action("_checkbox", "Forms", new { quest_id = Model.ElementAt(i).id })
+           if (Model.ElementAt(i).question_else.Count(p => p.id_question == Model.ElementAt(i).id) > 0)
+            {
+                <div class="form-group">
+                    <label>@Model.ElementAt(i).question_else.First(p => p.id_question == Model.ElementAt(i).id).name</label>
+                    <input class="form-control" type="text" name="else_@Model.ElementAt(i).id" placeholder="Введите свой вариант" />
+                </div>
+            }
+        }
+        else if (Model.ElementAt(i).id_type_question == 4)
+        {
+            @Html.Action("_select", "Forms", new { quest_id = Model.ElementAt(i).id })
+            if (Model.ElementAt(i).question_else.Count(p => p.id_question == Model.ElementAt(i).id) > 0)
+            {
+                <div class="form-group">
+                    <label>@Model.ElementAt(i).question_else.First(p => p.id_question == Model.ElementAt(i).id).name</label>
+                    <input class="form-control" type="text" name="else_@Model.ElementAt(i).id" placeholder="Введите свой вариант" />
+                </div>
+            }
+        }
+        else if (Model.ElementAt(i).id_type_question == 5)
+        {
+            @Html.Action("_table_radio", "Forms", new { quest_id = Model.ElementAt(i).id })
+        }
+        else if (Model.ElementAt(i).id_type_question == 6)
+        {
+            @Html.Action("_table_checkbox", "Forms", new { quest_id = Model.ElementAt(i).id })
+        }
+        else if (Model.ElementAt(i).id_type_question == 7)
+        {
+            <div class="form-group @if (Model.ElementAt(i).is_required == true) { Write("required_file"); }">
+                <input type="hidden" class="size_file" value="@Model.ElementAt(i).variant_file.First().max_size_file" />
+                <input class="form-control add_file" type="file" name="file_@Model.ElementAt(i).id"/>
+                <h6>Размер файла не должен превышать @Model.ElementAt(i).variant_file.First().max_size_file мб</h6>
+                <a href="#" class="del_file">Сбросить файл</a>
+            </div>
+        }
+        <div class="block_error"><p class="p_error">Заполните поле</p></div>
+    </div>
+
+}
+
+<div class="text_for_form">
+    <p>
+        @if (Model.Count() > 0)
+        { @Model.First().form.text_before_send }
+    </p>
+</div>

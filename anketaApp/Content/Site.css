@@ -1,24 +1,438 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #e4e4e4;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 20px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.form_details {
+    margin-top: 40px;
+    background-color: white;
+    padding: 40px 40px 50px 40px;
+    min-height: 80vh;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
 textarea {
-    max-width: 280px;
+    resize:vertical;
 }
+
+div.jumbotron.main_page_block {
+    min-height: 50vh;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.school_questions {
+    display: flex;
+    flex-direction: column;
+}
+
+.school_questions h4 {
+    line-height: 26px;
+    margin-right: 80px;
+}
+
+.name_h2{
+    padding-right:35px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.l_icon {
+    width: 50px;
+    height: 50px;
+    cursor:pointer;
+}
+
+div.row.form_head {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e4e4e4;
+    display: flex;
+    align-items: baseline;
+    position:relative;
+}
+
+.form_head > a {
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+}
+
+.add_one_question {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#one_questions {
+    padding: 30px;
+    border: 1px solid #e4e4e4;
+    background-color: #f9f9f9;
+    display:none;
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+    height: 25px;
+    position: static;
+    width: 25px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+.radio>.form-group{
+    display:flex;
+}
+
+.checkbox > .form-group {
+    display: flex;
+}
+
+.select > .form-group {
+    display: flex;
+}
+
+li.form-group{
+    display:flex;
+}
+
+#one_questions > h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#add_variant {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.del_variant{
+    margin-left:10px;
+}
+
+.radio_required{
+    display:flex;
+}
+
+.radio_required>div.form-group:first-child{
+    margin-right:20px;
+}
+
+.radio_required>div.form-group>label{
+    display: flex;
+    align-items: center;
+    font-weight:400;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    margin-right: 4px;
+}
+
+.p_add {
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    margin-bottom: 40px;
+}
+
+.p_add>a{
+    padding: 0px 10px;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.add_form{
+    margin-top:20px;
+}
+
+p.p_error{
+    color: red;
+}
+.span_error{
+    color:red;
+}
+
+.form_label {
+    display: flex;
+    font-weight: 400;
+}
+
+td>.form_label {
+    justify-content: center;
+}
+
+.table_form{
+    width:100%;
+}
+
+.table_form.table th{
+    text-align:center;
+}
+
+.table_form tr>td:first-child{
+    width:50%;
+}
+
+.list_question {
+    padding: 30px;
+}
+
+.block_question {
+    padding: 0px 0px 25px 0px;
+    position:relative;
+}
+a.del_btn{
+    position:absolute;
+    right:0px;
+}
+a.edit_q_btn {
+    position: absolute;
+    right: 40px;
+}
+
+.block_question h4 {
+    line-height: 26px;
+    margin-right: 80px;
+}
+.del_file{
+    display:none;
+}
+
+.forms_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+div.one_form {
+    margin: 20px 1.5%;
+    width: 30%;
+    border: 1px solid #e4e4e4;
+    padding: 10px 30px 30px 30px;
+}
+div.one_form>a{
+    margin-top: 20px;
+    width: 100%;
+}
+#file_label{
+    display:flex;
+}
+
+input.state_anketa[type="checkbox"] {
+    width: 60px;
+    height: 30px;
+    min-width: 60px;
+    min-height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: inset 0 0 5px rgba(0,0,0, .2);
+    transition: 0.5s;
+    position: relative;
+    cursor: pointer;
+}
+
+.state_anketa:checked[type="checkbox"] {
+    background: #4ab737;
+}
+
+.state_anketa[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0, .2);
+    transition: 0.5s;
+}
+
+.state_anketa:checked[type="checkbox"]::before {
+    left: 30px;
+}
+.block_error{
+    display:none;
+}
+.quest_img {
+    width: 50%;
+    position: relative;
+    margin-bottom: 20px;
+}
+.quest_img img{
+    width:100%;
+}
+.quest_img img.l_icon{
+    position: absolute;
+    top: calc(50% - 25px);
+    right: calc(50% - 25px);
+    width: 50px;
+    opacity: 0.8;
+}
+.comment_quest{
+    color: #8a8a8a;
+}
+dialog{
+    border: 1px solid #cecdcd;
+    padding: 30px;
+}
+.tabl {
+    display: flex;
+}
+.text_for_form {
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9c9c9c;
+}
+
+/*IMAGE LARGE*/
+.bg_l_image {
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    top: 0px;
+    z-index: 1500;
+    background-color: #3e3e3e;
+    display: none;
+    opacity: 0.9;
+}
+.large_image_div {
+    position: fixed;
+    z-index: 1600;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+#l_image {
+    max-width: 100%;
+    max-height: 100%;
+}
+.close_icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+/*IMAGE LARGE (END)*/
+
+
+/*DATEPICKER*/
+.ui-datepicker {
+    background-color: #fff;
+    border: 1px solid #66AFE9;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(102,175,233,.6);
+    display: none;
+    margin-top: 4px;
+    padding: 10px;
+    width: 240px;
+}
+.ui-datepicker a,
+.ui-datepicker a:hover {
+    text-decoration: none;
+}
+.ui-datepicker a:hover,
+.ui-datepicker td:hover a {
+    color: #2A6496;
+    -webkit-transition: color 0.1s ease-in-out;
+    -moz-transition: color 0.1s ease-in-out;
+    -o-transition: color 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-header {
+    margin-bottom: 4px;
+    text-align: center;
+}
+.ui-datepicker .ui-datepicker-title {
+    font-weight: 700;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    cursor: default;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    height: 20px;
+    line-height: 1;
+    margin-top: 2px;
+    width: 30px;
+}
+.ui-datepicker .ui-datepicker-prev {
+    float: left;
+    text-align: left;
+}
+.ui-datepicker .ui-datepicker-next {
+    float: right;
+    text-align: right;
+}
+.ui-datepicker .ui-datepicker-prev:before {
+    content: "\e079";
+}
+.ui-datepicker .ui-datepicker-next:before {
+    content: "\e080";
+}
+.ui-datepicker .ui-icon {
+    display: none;
+}
+.ui-datepicker .ui-datepicker-calendar {
+    table-layout: fixed;
+    width: 100%;
+}
+.ui-datepicker .ui-datepicker-calendar th,
+.ui-datepicker .ui-datepicker-calendar td {
+    text-align: center;
+    padding: 4px 0;
+}
+.ui-datepicker .ui-datepicker-calendar td {
+    border-radius: 4px;
+    -webkit-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    -moz-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+     -o-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-calendar td:hover {
+    background-color: #eee;
+    cursor: pointer;
+    }
+.ui-datepicker .ui-datepicker-calendar td a {
+    text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-current-day {
+    background-color: #4289cc;
+}
+.ui-datepicker .ui-datepicker-current-day a {
+    color: #fff
+}
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-unselectable:hover {
+    background-color: #fff;
+    cursor: default;
+}
+/*DATEPICKER (END)*/
